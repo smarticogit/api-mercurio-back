@@ -4,9 +4,8 @@ const express = require('express');
 const app = express();
 
 app.get('/login', (req, res) => {
-    console.log("Dentro do Endpoint");
     res.status(200);
-    res.send("Mercurio");
+    res.send("Login");
 });
 
 app.listen(3000, () => {
