@@ -1,11 +1,19 @@
+const usuarios = require('./dados/dados');
 const { response } = require('express');
 const express = require('express');
 
 const app = express();
 
-app.get('/login', (req, res) => {
+app.get('/usuarios', (req, res) => {
     res.status(200);
-    res.send("Login");
+    res.send(usuarios);
+});
+
+app.get('/usuarios/:id', (req, res) => {
+    const { id } = req.params;
+    const usuario = usuarios.find(user => user.id === Number(id));
+    res.status(200);
+    res.send(usuario);
 });
 
 app.listen(3000, () => {
