@@ -1,9 +1,11 @@
 const express = require('express');
-const userControler = require('./controladores/users');
+const userController = require('./controladores/users');
 
 const rotas = express();
 
-rotas.get('/users', userControler.listarUsuarios);
-rotas.get('/users/:id', userControler.obterUsuario);
+rotas.get('/users', userController.listarUsuarios);
+rotas.get('/users/:id', userController.obterUsuario);
+
+rotas.post('/users', userController.criarUsuario);
 
 module.exports = rotas;
