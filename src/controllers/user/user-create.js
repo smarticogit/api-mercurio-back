@@ -1,20 +1,9 @@
 const pool = require("../../connection");
-const { emailValidator } = require("../../utils/emailValidator");
 
 const userCreate = async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
-    if (!name || !email || !password) {
-      return res.status(400).json({ message: "All fields must be filled" });
-    }
-
-    const result = await emailValidator(email);
-
-    if (result.rowCount > 0) {
-      return res.status(400).json({ message: "Email already exists" });
-    }
-
     const query =
       "insert into users (name, email, password) values ($1, $2, $3) returning *";
     const params = [name, email, password];
