@@ -5,11 +5,13 @@ const { userCreate } = require("./controllers/user/user-create");
 const { userDelete } = require("./controllers/user/user-delete");
 const { userUpdate } = require("./controllers/user/user-update");
 const { validator } = require("./middlewares/validator");
+const { login } = require("./controllers/user/user-login");
 
 const routers = express();
 
 routers.use("/users", validator);
 
+routers.post("/login", login);
 routers.get("/users", usersList);
 routers.get("/users/:id", userGet);
 routers.post("/users", userCreate);
